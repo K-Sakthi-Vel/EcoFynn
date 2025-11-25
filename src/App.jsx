@@ -2,6 +2,7 @@ import React from 'react'
 import Header from './components/Header.jsx'
 import Hero from './components/Hero.jsx'
 import AboutUs from './components/AboutUs.jsx'
+import ProductLines from './components/ProductLines.jsx'
 import ProductGrid from './components/ProductGrid'
 import Features from './components/Features'
 import Testimonials from './components/Testimonials'
@@ -15,12 +16,7 @@ export default function App() {
       <main className="relative overflow-hidden">
         <Hero />
         <AboutUs />
-        <section className="py-16 px-6 max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-semibold mb-6">Our Primary Product Lines</h2>
-          <Features />
-        </section>
-
-
+        <ProductLines />
         <section className="py-16 px-6 bg-white/60">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-semibold mb-6">Trending Products</h2>
