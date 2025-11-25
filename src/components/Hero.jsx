@@ -156,7 +156,7 @@ export default function Hero() {
 
             {/* Corner Images */}
             <motion.img
-                src="/src/assets/hero/top-left.png"
+                src="/src/assets/top-left.png"
                 alt="leaf"
                 className="absolute top-0 left-0 w-100 h-70 object-contain"
                 initial="hidden"
@@ -165,7 +165,7 @@ export default function Hero() {
                 variants={imageVariants}
             />
             <motion.img
-                src="/src/assets/hero/top-right.png"
+                src="/src/assets/top-right.png"
                 alt="leaf"
                 className="absolute top-0 right-0 w-100 h-70 object-contain"
                 initial="hidden"
@@ -174,7 +174,7 @@ export default function Hero() {
                 variants={imageVariants}
             />
             <motion.img
-                src="/src/assets/hero/bottom-left.png"
+                src="/src/assets/bottom-left.png"
                 alt="leaf"
                 className="absolute bottom-0 left-0 w-100 h-70 object-contain"
                 initial="hidden"
@@ -183,7 +183,7 @@ export default function Hero() {
                 variants={imageVariants}
             />
             <motion.img
-                src="/src/assets/hero/bottom-right.png"
+                src="/src/assets/bottom-right.png"
                 alt="leaf"
                 className="absolute bottom-0 right-0 w-120 h-70 object-contain"
                 initial="hidden"
