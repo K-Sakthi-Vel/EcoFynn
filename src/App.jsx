@@ -1,0 +1,40 @@
+import React from 'react'
+import Header from './components/Header'
+import Hero from './components/Hero'
+import ProductGrid from './components/ProductGrid'
+import Features from './components/Features'
+import Testimonials from './components/Testimonials'
+import Footer from './components/Footer'
+
+
+export default function App() {
+  return (
+    <div className="min-h-screen font-sans text-gray-800">
+      <Header />
+      <main className="relative overflow-hidden">
+        <Hero />
+        <section className="py-16 px-6 max-w-7xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-semibold mb-6">Our Primary Product Lines</h2>
+          <Features />
+        </section>
+
+
+        <section className="py-16 px-6 bg-white/60">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-semibold mb-6">Trending Products</h2>
+            <ProductGrid />
+          </div>
+        </section>
+
+
+        <section className="py-16 px-6 max-w-7xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-semibold mb-6">What Our Customers Say</h2>
+          <Testimonials />
+        </section>
+
+
+      </main>
+      <Footer />
+    </div>
+  )
+}
