@@ -212,19 +212,19 @@ export default function WhyChooseUs() {
     <section
       ref={sectionRef}
       className="relative bg-cover bg-center py-20 px-6 text-white min-h-[100vh] flex items-center overflow-hidden"
-      style={{ backgroundImage: `url(${whyChooseUsBg})` }}
+      style={{ backgroundImage: `url(${whyChooseUsBg})`}}
     >
       <div className="absolute inset-0 bg-green-800 opacity-70"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto text-center w-full">
-        <h2 className="text-4xl md:text-5xl font-bold mb-4">Why Choose Us</h2>
+        <h2 className="text-4xl md:text-5xl font-semibold mb-4" style={{fontFamily:'Poppins'}}>Why Choose Us</h2>
         <p className="text-lg md:text-xl mb-12 max-w-3xl mx-auto">
           Our goal is to make eco-friendly choices easy for both individuals and businesses.
         </p>
 
         {/* Icon track */}
         <div
-          className="relative flex justify-center items-center h-48 md:h-64 mb-8 w-full overflow-hidden"
+          className="relative flex justify-center items-center h-48 md:h-45 w-full overflow-hidden"
           aria-hidden="true"
         >
           <div className="absolute left-0 right-0 h-[3px] top-1/2 transform -translate-y-1/2" />
@@ -251,7 +251,7 @@ export default function WhyChooseUs() {
         </div>
 
         {/* Title + Description area (stacked absolutely, keep space reserved by spacer) */}
-        <div style={{ position: "relative", width: "100%" }} className="mb-12">
+        <div style={{ position: "relative", width: "100%" }} className="mb-2">
           {/* Spacer keeps layout stable with height = tallest content */}
           <div style={{ height: maxContentHeight || undefined }} />
 
@@ -284,7 +284,7 @@ export default function WhyChooseUs() {
                     pointerEvents: idx === activeIndex ? "auto" : "none",
                   }}
                 >
-                  <h3 className="text-3xl md:text-4xl font-semibold mb-4">{f.title}</h3>
+                  <h3 className="text-3xl text-yellow-400  md:text-4xl font-semibold mb-30">{f.title}</h3>
                   <p className="text-lg md:text-xl max-w-4xl mx-auto">{f.description}</p>
                 </div>
               ))}

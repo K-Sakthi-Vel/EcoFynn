@@ -8,6 +8,7 @@ import Features from './components/Features'
 import Testimonials from './components/Testimonials'
 import ImpactSection from './components/ImpactSection'
 import WhyChooseUs from './components/WhyChooseUs'
+import ClientsMarquee from './components/ClientsMarquee'
 import Footer from './components/Footer'
 
 
@@ -22,6 +23,7 @@ export default function App() {
         <TrendingProducts />
         <ImpactSection />
         <WhyChooseUs />
+        <ClientsMarquee />
 
         <section className="py-16 px-6 max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-semibold mb-6">What Our Customers Say</h2>
