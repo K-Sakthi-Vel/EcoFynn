@@ -60,7 +60,7 @@ export default function AboutUs() {
         <img
           src="/src/assets/top-left.png"
           alt="leaf decoration"
-          className="w-100 h-70 opacity-50"
+          className="w-100 h-70 opacity-100"
         />
       </div>
 
@@ -69,7 +69,7 @@ export default function AboutUs() {
         <img
           src="/src/assets/bottom-right.png"
           alt="decorative"
-          className="w-100 h-70 opacity-50 object-contain"
+          className="w-100 h-70 opacity-100 object-contain"
         />
       </div>
 
