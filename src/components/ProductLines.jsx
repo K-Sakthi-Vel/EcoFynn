@@ -2,36 +2,44 @@ import React, { useEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
+import productLinesBg from '../assets/product_lines/product-lines-bg.jpg';
+import product1 from '../assets/product_lines/product1.jpg';
+import product2 from '../assets/product_lines/product2.jpg';
+import product3 from '../assets/product_lines/product3.jpg';
+import product4 from '../assets/product_lines/product4.jpg';
+import product5 from '../assets/product_lines/product5.jpg';
+import product6 from '../assets/product_lines/product6.jpg';
+
 const productData = [
     {
         title: 'Ethical Paper',
         description: 'Made from 100% recycled and tree-free materials for everyday printing, writing, and art.',
-        image: '/src/assets/product_lines/product1.jpg',
+        image: product1,
     },
     {
         title: 'Sustainable Stationery',
         description: 'Notebooks, diaries, and office supplies crafted from recycled paper with minimal environmental impact.',
-        image: '/src/assets/product_lines/product2.jpg',
+        image: product2,
     },
     {
         title: 'Ecopact Recycled Tissues',
         description: 'Soft, unbleached tissues made from industrial kraft paper waste, offering a clean and green alternative.',
-        image: '/src/assets/product_lines/product3.jpg',
+        image: product3,
     },
     {
         title: 'Bioplastics',
         description: 'Compostable and bio-based alternatives to traditional plastic items for responsible packaging and use.',
-        image: '/src/assets/product_lines/product4.jpg',
+        image: product4,
     },
     {
         title: 'Disposable Cutlery',
         description: 'Durable, food-safe cutlery manufactured from plant-based or recycled materials for sustainable dining.',
-        image: '/src/assets/product_lines/product5.jpg',
+        image: product5,
     },
     {
         title: 'Packaging Solutions',
         description: 'Eco-friendly packaging options that replace conventional plastics with recyclable and biodegradable materials.',
-        image: '/src/assets/product_lines/product6.jpg',
+        image: product6,
     },
 ];
 
@@ -46,7 +54,7 @@ export default function ProductLines() {
     return (
         <section
             className="relative py-20 px-4 bg-cover bg-center overflow-hidden"
-            style={{ backgroundImage: "url('/src/assets/product_lines/product-lines-bg.jpg')" }}
+            style={{ backgroundImage: `url(${productLinesBg})` }}
         >
             <div className="absolute inset-0 bg-white opacity-70"></div>
 
