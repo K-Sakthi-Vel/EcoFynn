@@ -51,7 +51,7 @@ export default function Footer() {
             style={{ backgroundImage: `url(${footerBg})`, backgroundSize: 'cover', backgroundPosition: 'center' , fontFamily:"Poppins"}}
         >
 
-            <div className="relative z-20 mx-auto pb-10 sm:pb-20 px-4 md:px-8 lg:px-12 flex flex-col md:flex-col lg:flex-row justify-between">
+            <div className="relative z-20 mx-auto pb-10 sm:pb-20 px-4 md:px-8 lg:px-50 flex flex-col md:flex-col lg:flex-row justify-between">
                 {/* Left Section: Logo, Description, and Brochure */}
                 <div className="flex flex-col items-start w-full md:w-full lg:w-1/2 lg:pr-10 mb-10 md:mb-0">
                     <img src={logo} alt="Ecofynn Logo" className="w-24 h-auto mb-6 ml-0 md:ml-[-10px]" />
