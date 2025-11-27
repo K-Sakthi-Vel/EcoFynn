@@ -67,7 +67,7 @@ export default function WhoWeAre() {
     <section
       id="who-we-are-section"
       ref={sectionRef}
-      className="bg-green-700 text-white py-20 px-8 lg:px-20 flex flex-col lg:flex-row items-center"
+      className="bg-[#086c02] text-white py-20 px-8 lg:px-20 flex flex-col lg:flex-row items-center"
     >
       <div className="lg:w-1/2 mb-10 lg:mb-0 lg:pr-12 self-start pt-12">
         <h2 className="text-5xl font-bold mb-6">Who We Are?</h2>

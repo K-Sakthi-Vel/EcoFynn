@@ -10,6 +10,7 @@ import ImpactSection from './components/ImpactSection'
 import WhyChooseUs from './components/WhyChooseUs'
 import ClientsMarquee from './components/ClientsMarquee'
 import WhoWeAre from './components/WhoWeAre'
+import OurCustomersSay from './components/OurCustomersSay'
 import Footer from './components/Footer'
 
 
@@ -26,13 +27,7 @@ export default function App() {
         <WhyChooseUs />
         <ClientsMarquee />
         <WhoWeAre />
-
-        <section className="py-16 px-6 max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-semibold mb-6">What Our Customers Say</h2>
-          <Testimonials />
-        </section>
-
-
+        <OurCustomersSay />
       </main>
       <Footer />
     </div>
