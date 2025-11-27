@@ -7,7 +7,6 @@
   line-height: 1.5;
 
   color-scheme: light dark;
-  color: black/80;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -51,4 +50,3 @@ html::-webkit-scrollbar {
 .hide-scrollbar::-webkit-scrollbar {
   display: none; /* Chrome, Safari and Opera */
 }
-

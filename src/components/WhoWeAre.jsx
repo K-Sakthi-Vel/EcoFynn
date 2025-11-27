@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import "./WhoWeAre.css"; // <-- import the stylesheet
+import "./css/WhoWeAre.css"; // <-- import the stylesheet
 import missionImg from "../assets/who_we_are/mission.png";
 import approachImg from "../assets/who_we_are/approach.png";
 import impactImg from "../assets/who_we_are/imapct.png";
@@ -67,17 +67,17 @@ export default function WhoWeAre() {
     <section
       id="who-we-are-section"
       ref={sectionRef}
-      className="bg-[#086c02] text-white py-20 px-8 lg:px-20 flex flex-col lg:flex-row items-center"
+      className="bg-[#086c02] text-white py-10 lg:py-20 px-8 lg:px-50 flex flex-col lg:flex-row items-center"
     >
-      <div className="lg:w-1/2 mb-10 lg:mb-0 lg:pr-12 self-start pt-12">
-        <h2 className="text-5xl font-bold mb-6">Who We Are?</h2>
-        <p className="text-lg mb-4">
+      <div className="text-content lg:w-1/2 mb-10 lg:mb-0 lg:pr-12 self-start pt-12 text-center lg:text-left">
+        <h2 className="text-3xl lg:text-5xl font-bold mb-6">Who We Are?</h2>
+        <p className="text-base lg:text-lg mb-4">
           Future Green creates practical, sustainable products that fit seamlessly into everyday life.
         </p>
-        <p className="text-lg mb-8">
+        <p className="text-base lg:text-lg mb-8">
           We combine responsible materials, thoughtful design, and transparent practices to make eco-friendly choices easy and accessible.
         </p>
-        <button className="bg-white text-green-700 font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-gray-100 transition duration-300">
+        <button className="bg-white text-green-700 font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-gray-100 transition duration-300 mx-auto lg:mx-0 cursor-pointer">
           Know More
         </button>
       </div>

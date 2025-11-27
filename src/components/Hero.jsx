@@ -98,7 +98,7 @@ export default function Hero() {
                     initial="hidden"
                     animate={controls}
                     variants={welcomeTextParentVariants}
-                    className="text-black-700 text-lg mb-4 inline-block relative"
+                    className="text-black text-lg mb-4 inline-block relative"
                 >
                     <motion.span
                         initial="hidden"
@@ -111,7 +111,8 @@ export default function Hero() {
                         initial="hidden"
                         animate={controls}
                         variants={textRevealVariants}
-                        className="relative px-4 py-2 inline-block"
+                        className="relative px-4 py-2 inline-block text-black"
+                        style={{ color: 'black' }}
                     >
                         Welcome to the world of
                     </motion.span>

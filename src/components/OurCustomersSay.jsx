@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
+import { ChevronLeftIcon, ChevronRightIcon, UserCircleIcon } from '@heroicons/react/24/outline';
 import customerSaysBg from '../assets/our_customer_says/customer-says-bg.jpg';
 import doubleQuotesIcon from '../assets/our_customer_says/double-quotes.png';
 
@@ -99,12 +99,12 @@ export default function OurCustomersSay() {
 
   return (
     <section 
-      className="relative py-20 min-h-screen flex justify-center items-center overflow-hidden" 
+      className="relative py-10 lg:py-20 px-8 lg:px-50 min-h-screen flex justify-center items-center overflow-hidden" 
       style={{ backgroundImage: `url(${customerSaysBg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
     >
       {/* Overlay for background opacity if needed, based on the image */}
       {/* <div className="absolute inset-0 bg-white opacity-70"></div> */}
-      <div className="relative z-10 max-auto mx-auto px-10 text-center lg:px-20">
+      <div className="relative z-10 max-auto mx-auto px-4 text-center lg:px-20">
         <h2 className="text-5xl font-bold text-gray-900 mb-2" style={{fontFamily:'Poppins'}}>Know What Our Customers Say</h2>
         <p className="text-lg text-gray-800 mb-10">
           Businesses and individuals trust our products for their quality, value, and genuine sustainability.
@@ -112,13 +112,13 @@ export default function OurCustomersSay() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
           {currentTestimonials.map((testimonial) => (
-            <div key={testimonial.id} className="bg-white rounded-2xl shadow-sm p-8 flex flex-col text-left border border-gray-100 w-[380px] h-[350px]">
+            <div key={testimonial.id} className="bg-white rounded-2xl shadow-sm p-8 flex flex-col text-left border border-gray-100">
               <div className="flex items-center justify-center h-12 w-12 rounded-full border border-gray-300 border-2 bg-white mb-6 flex-shrink-0">
                 <img src={doubleQuotesIcon} alt="Double Quotes" className="h-6 w-6 object-contain" />
               </div>
-              <p className="text-lg text-gray-800 leading-relaxed mb-6 overflow-hidden flex-grow">{testimonial.quote}</p>
+              <p className="text-lg text-gray-800 leading-relaxed mb-6 flex-grow">{testimonial.quote}</p>
               <div className="border-t border-gray-200 pt-6 mt-auto flex items-center flex-shrink-0">
-                <div className="h-10 w-10 bg-gray-300 rounded-full mr-3 flex-shrink-0"></div> {/* Placeholder for avatar */}
+                <UserCircleIcon className="h-12 w-12 text-gray-400 mr-3 flex-shrink-0" />
                 <div>
                   <p className="text-base font-semibold text-gray-900">{testimonial.name}</p>
                   <p className="text-sm text-gray-600">{testimonial.title}</p>

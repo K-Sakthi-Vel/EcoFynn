@@ -87,34 +87,36 @@ export default function TrendingProducts() {
                 />
             </div>
 
-            <div className="relative z-10 max-w-7xl mx-auto">
-                <div className="flex justify-between items-center mb-10">
-                    <div>
-                        <h2 className="text-5xl font-bold text-gray-900 mb-2">Trending Products</h2>
-                        <p className="text-gray-800 text-lg">Popular eco-friendly essentials that customers choose for quality, value, and sustainability.</p>
+            <div className="relative z-10 w-auto mx-auto px-4 sm:px-6 lg:px-50">
+                <div className="flex flex-col md:flex-row justify-between items-center mb-10 text-center md:text-left">
+                    <div className="mb-6 md:mb-0">
+                        <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-2" style={{fontFamily:"Poppins"}}>Trending Products</h2>
+                        <p className="text-gray-800 text-base sm:text-lg">Popular eco-friendly essentials that customers choose for quality, value, and sustainability.</p>
                     </div>
-                    <div className="flex items-center space-x-4">
-                        <button className="px-8 py-3 bg-green-500 text-white font-semibold rounded-full shadow-lg hover:bg-green-600 transition duration-300 text-lg">
+                    <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 w-full md:w-auto">
+                        <button className="px-8 py-3 bg-green-500 text-white font-semibold rounded-full shadow-lg hover:bg-green-600 transition duration-300 text-lg w-full sm:w-auto">
                             View All
                         </button>
-                        <button
-                            onClick={() => scroll('left')}
-                            className={`p-3 rounded-full transition duration-300 cursor-pointer 
-                                ${canScrollLeft
-                                    ? 'border border-black border-2 text-black hover:text-yellow-400 hover:border-yellow-400 hover:bg-yellow-100'
-                                    : 'border border-gray-300 text-gray-400 cursor-not-allowed'
-                                }`}
-                            disabled={!canScrollLeft}
-                        >
-                            <ChevronLeftIcon className="h-6 w-6 text-current transition duration-300" />
-                        </button>
-                        <button
-                            onClick={() => scroll('right')}
-                            className={`p-3 rounded-full transition duration-300 cursor-pointer z ${canScrollRight ? 'border border-2 border-green-500 text-green-500 hover:bg-green-100' : 'border border-gray-300 text-gray-400 cursor-not-allowed'}`}
-                            disabled={!canScrollRight}
-                        >
-                            <ChevronRightIcon className={`h-6 w-6 ${canScrollRight ? 'text-green-500' : 'text-gray-400'}`} />
-                        </button>
+                        <div className="flex space-x-4 mt-4 sm:mt-0">
+                            <button
+                                onClick={() => scroll('left')}
+                                className={`p-3 rounded-full transition duration-300 cursor-pointer 
+                                    ${canScrollLeft
+                                        ? 'border border-black border-2 text-black hover:text-yellow-400 hover:border-yellow-400 hover:bg-yellow-100'
+                                        : 'border border-gray-300 text-gray-400 cursor-not-allowed'
+                                    }`}
+                                disabled={!canScrollLeft}
+                            >
+                                <ChevronLeftIcon className="h-6 w-6 text-current transition duration-300" />
+                            </button>
+                            <button
+                                onClick={() => scroll('right')}
+                                className={`p-3 rounded-full transition duration-300 cursor-pointer z ${canScrollRight ? 'border border-2 border-green-500 text-green-500 hover:bg-green-100' : 'border border-gray-300 text-gray-400 cursor-not-allowed'}`}
+                                disabled={!canScrollRight}
+                            >
+                                <ChevronRightIcon className={`h-6 w-6 ${canScrollRight ? 'text-green-500' : 'text-gray-400'}`} />
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -127,25 +129,25 @@ export default function TrendingProducts() {
                         scrollbar-width: none;  /* Firefox */
                     }
                 `}</style>
-                <div ref={scrollContainerRef} className="flex overflow-x-auto space-x-6 pb-4 no-scrollbar">
+                <div ref={scrollContainerRef} className="flex overflow-x-auto space-x-4 sm:space-x-6 pb-4 no-scrollbar">
                     {products.map(product => (
-                        <div key={product.id} className="h-[500px] min-w-[350px] max-w-[500px] bg-white rounded-2xl shadow-lg p-4 flex flex-col items-start border border-gray-200">
-                            <div className="relative w-full h-100 mb-3 rounded-lg overflow-hidden border border-gray-200 bg-gray-100">
+                        <div key={product.id} className="h-[500px] min-w-[80vw] sm:min-w-[300px] md:min-w-[350px] max-w-[500px] bg-white rounded-2xl shadow-lg p-4 flex flex-col items-start border border-gray-200">
+                            <div className="relative w-full h-80 sm:h-100 mb-3 rounded-lg overflow-hidden border border-gray-200 bg-gray-100">
                                 <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
                             </div>
-                            <div className="flex justify-between items-center w-full mb-3">
-                                <h3 className="text-2xl font-semibold text-gray-800" style={{ fontFamily: 'Poppins' }}>{product.name}</h3>
-                                <span className="text-sm font-semibold text-green-500 flex items-center">5 <span className="text-yellow-400 text-lg ml-1">⭐</span></span>
+                            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center w-full mb-3">
+                                <h3 className="text-xl sm:text-2xl font-semibold text-gray-800" style={{ fontFamily: 'Poppins' }}>{product.name}</h3>
+                                <span className="text-sm font-semibold text-green-500 flex items-center mt-2 sm:mt-0">5 <span className="text-yellow-400 text-lg ml-1">⭐</span></span>
                             </div>
 
-                            <div className="flex justify-between items-center w-full">
+                            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center w-full">
                                 <span>
                                     <p className="text-gray-800 text-sm mb-2">Starting From</p>
-                                    <span className="text-2xl font-bold text-gray-900" style={{ fontFamily: 'DM Sans' }}>₹{product.price} <span className="text-base text-gray-500">/Pc</span>
+                                    <span className="text-xl sm:text-2xl font-bold text-gray-900" style={{ fontFamily: 'DM Sans' }}>₹{product.price} <span className="text-base text-gray-500">/Pc</span>
                                     </span>
                                 </span>
 
-                                <button className="flex items-center gap-2 px-8 py-5 bg-green-500 text-white font-semibold rounded-full hover:bg-yellow-400 transition duration-300 text-sm" style={{fontFamily:'Poppins'}}>
+                                <button className="flex items-center gap-2 px-6 py-3 sm:px-8 sm:py-5 bg-green-500 text-white font-semibold rounded-full hover:bg-yellow-400 transition duration-300 text-sm mt-4 sm:mt-0" style={{fontFamily:'Poppins'}}>
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                                     </svg>

@@ -16,9 +16,9 @@ import Footer from './components/Footer'
 
 export default function App() {
   return (
-    <div className="min-h-screen font-sans text-gray-800">
+    <div className="min-h-screen font-sans text-gray-800 bg-white">
       <Header />
-      <main className="relative overflow-hidden">
+      <main className="relative overflow-hidden bg-white">
         <Hero />
         <AboutUs />
         <ProductLines />

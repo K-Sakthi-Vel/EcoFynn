@@ -55,9 +55,9 @@ export default function ProductLines() {
             {/* Overlay for background opacity */}
             <div className="absolute inset-0 bg-white opacity-70"></div>
 
-            <div className="relative z-10 max-w-6xl mx-auto">
+            <div className="relative z-10 w-auto mx-auto px-4 sm:px-6 lg:px-50">
                 <div className="text-center mb-12">
-                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Our Primary Product Lines</h2>
+                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4" style={{fontFamily:"Poppins"}}>Our Primary Product Lines</h2>
                     <p className="text-lg text-gray-700 max-w-md mx-auto">Responsible essentials designed to reduce waste and support everyday sustainable living.</p>
                 </div>
 
