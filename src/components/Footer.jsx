@@ -1,13 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import axios from 'axios';
 import logo from '../assets/logo.png';
 import footerBg from '../assets/footer/footer-bg.png'; // Assuming this is the correct background image as per user
 import facebookIcon from '../assets/footer/facebook.png';
 import instagramIcon from '../assets/footer/instagram.png';
 import twitterIcon from '../assets/footer/twitter.png'; // This will be used for 'X' as per user's image
 
-
+const {VITE_BACKEND_URL} = import.meta.env;
 export default function Footer() {
+    const [email, setEmail] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [message, setMessage] = useState(''); // For success/error messages
+
+    const handleBrochureRequest = async () => {
+        setLoading(true);
+        setMessage(''); // Clear previous messages
+
+        try {
+            // First, validate the email
+            const validationResponse = await axios.post(`${VITE_BACKEND_URL}/validate-email`, { email });
+            if (!validationResponse.data.isValid) {
+                setMessage(validationResponse.data.message);
+                setLoading(false);
+                return;
+            }
+
+            // If valid, proceed to send the brochure
+            const brochureResponse = await axios.post(`${VITE_BACKEND_URL}/send-brochure`, { email });
+            setMessage(brochureResponse.data.message);
+            setEmail(''); // Clear email input on success
+        } catch (error) {
+            console.error('Error in request:', error);
+            setMessage(error.response?.data?.message || 'Network error. Please try again.');
+        } finally {
+            setLoading(false);
+            // Set a timeout to clear the message after 5 seconds
+            setTimeout(() => {
+                setMessage('');
+            }, 3000);
+        }
+    };
+
     return (
         <motion.footer
             className="relative bg-[#2D452A] text-white overflow-hidden pt-[200px] sm:pt-[300px] md:pt-[300px]" // Adjusted padding-top for responsiveness
@@ -30,11 +64,22 @@ export default function Footer() {
                             className="flex-grow rounded-full px-4 sm:px-10 pr-4 sm:pr-20 py-3 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-400 bg-white mb-4 sm:mb-0"
                             placeholder="Enter email id"
                             type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
-                        <button className="whitespace-nowrap rounded-full px-6 py-3 sm:py-5 bg-[#2dbc3b] sm:ml-5 text-white font-semibold hover:bg-[#4CAF3A] transition-colors duration-200">
-                            Get Brochure
+                        <button
+                            className="whitespace-nowrap rounded-full px-6 py-3 sm:py-5 bg-[#2dbc3b] sm:ml-5 text-white font-semibold hover:bg-[#4CAF3A] transition-colors duration-200"
+                            onClick={handleBrochureRequest}
+                            disabled={loading}
+                        >
+                            {loading ? 'Sending...' : 'Get Brochure'}
                         </button>
                     </div>
+                    {message && (
+                        <p className={`mt-2 text-sm ${message.includes('successfully') ? 'text-green-400' : 'text-red-400'}`}>
+                            {message}
+                        </p>
+                    )}
                     <div className="mt-6 flex gap-3">
                         <img src={facebookIcon} alt="Facebook" className="w-10 h-10 cursor-pointer" />
                         <img src={instagramIcon} alt="Instagram" className="w-10 h-10 cursor-pointer" />
