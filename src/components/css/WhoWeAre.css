@@ -1,0 +1,79 @@
+/* Basic page defaults (you can keep or remove if you already have global styles) */
+body {
+  background-color: #2e3537;
+  font-family: "Arial", sans-serif;
+}
+
+/* tweak these variables to change stacking behaviour */
+:root {
+  --cards: 4;
+  --cardHeight: 430px;        /* matched to your component height */
+  --cardTopPadding: 1em;
+  --cardMargin: 4vw;
+}
+
+/* small helper to constrain layout (keeps your provided CSS compatible) */
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* cards grid / stacking container */
+#cards {
+  list-style: none;
+  padding-left: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(var(--cards), var(--cardHeight));
+  gap: var(--cardMargin);
+  margin-bottom: var(--cardMargin);
+}
+
+#card1 { --index: 1; }
+#card2 { --index: 2; }
+#card3 { --index: 3; }
+#card4 { --index: 4; }
+
+/* make each card sticky so they "stack" while scrolling the list container */
+.card {
+  position: sticky;
+  top: 0;
+  padding-top: calc(var(--index) * var(--cardTopPadding));
+  transition: top 0.3s ease-in-out; /* Add smooth transition for vertical movement */
+}
+
+/* distinct backgrounds per card */
+/* distinct backgrounds per card */
+
+
+/* card body appearance */
+.card-body {
+  box-sizing: border-box;
+  height: var(--cardHeight);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s;
+}
+
+/* Ensure images fit inside card-body neatly */
+.card-body img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* heading size (kept from your original) */
+h2 {
+  font-size: 2.5em;
+}
+
+/* small utility to hide default scrollbar (works for most browsers) */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
