@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import "./css/WhoWeAre.css"; // <-- import the stylesheet
+import "./css/WhoWeAre.css";
 import missionImg from "../assets/who_we_are/mission.png";
 import approachImg from "../assets/who_we_are/approach.png";
 import impactImg from "../assets/who_we_are/imapct.png";

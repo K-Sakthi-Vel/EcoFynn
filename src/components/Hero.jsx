@@ -6,14 +6,12 @@ export default function Hero() {
     const controls = useAnimation();
     const [ref, inView] = useInView({
         triggerOnce: true,
-        threshold: 0.1, // Trigger when 10% of the component is in view
+        threshold: 0.1,
     });
 
     useEffect(() => {
         if (inView) {
             const sequence = async () => {
-                // Background Overlay is now static, no animation needed here.
-
                 // 1. "Welcome to the world of" line (text and rounded background)
                 await Promise.all([
                     controls.start('welcomeTextVisible'), // Animate parent p tag (opacity and y)
@@ -77,11 +75,9 @@ export default function Hero() {
     };
 
     const buttonGroupVariants = {
-        hidden: { opacity: 0, y: 100 }, // Increased y to ensure off-screen start
+        hidden: { opacity: 0, y: 100 },
         buttonsVisible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut", staggerChildren: 0.4 } }
     };
-
-    // individualButtonVariants is removed
 
     return (
         <section
@@ -89,8 +85,7 @@ export default function Hero() {
             className="relative bg-cover bg-center h-[calc(100vh-80px)] flex items-center justify-center text-center px-4 overflow-hidden"
             style={{ backgroundImage: "url('/src/assets/hero/hero-bg.jpg')" }}
         >
-            {/* Overlay for background blur/opacity */}
-            <div className="absolute inset-0 bg-white opacity-70"></div> {/* Fixed opacity, no animation */}
+            <div className="absolute inset-0 bg-white opacity-70"></div>
 
             {/* Content */}
             <div className="relative z-10 max-w-4xl mx-auto p-6">
@@ -122,7 +117,7 @@ export default function Hero() {
                     animate={controls}
                     variants={headingParentVariants}
                     className="text-5xl md:text-6xl font-bold leading-1 text-gray-900 mb-6 overflow-hidden"
-                    style={{ minHeight: '3em' }} // Ensure space for heading even when hidden
+                    style={{ minHeight: '3em' }}
                 >
                     <span className="block">SUSTAINABLE PRODUCTS</span>
                     <span className="block">FOR EVERYDAY USE</span>

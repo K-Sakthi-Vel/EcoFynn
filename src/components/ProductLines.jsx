@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
-// Define Product Data outside the component to prevent re-creation on re-renders
 const productData = [
     {
         title: 'Ethical Paper',
@@ -37,11 +36,8 @@ const productData = [
 ];
 
 export default function ProductLines() {
-    // Determine cards per row based on breakpoints. For simplicity, we assume lg:grid-cols-3
-    // In a real app, you might use a more robust way to detect active Tailwind breakpoints
     const cardsPerRow = 3; 
 
-    // Split products into rows for staggered animation on scroll
     const productsInRows = [];
     for (let i = 0; i < productData.length; i += cardsPerRow) {
         productsInRows.push(productData.slice(i, i + cardsPerRow));
@@ -52,10 +48,9 @@ export default function ProductLines() {
             className="relative py-20 px-4 bg-cover bg-center overflow-hidden"
             style={{ backgroundImage: "url('/src/assets/product_lines/product-lines-bg.jpg')" }}
         >
-            {/* Overlay for background opacity */}
             <div className="absolute inset-0 bg-white opacity-70"></div>
 
-            <div className="relative z-10 w-auto mx-auto px-4 sm:px-6 lg:px-50">
+            <div className="relative z-10 w-auto mx-auto px-4 sm:px-6 lg:px-20">
                 <div className="text-center mb-12">
                     <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4" style={{fontFamily:"Poppins"}}>Our Primary Product Lines</h2>
                     <p className="text-lg text-gray-700 max-w-md mx-auto">Responsible essentials designed to reduce waste and support everyday sustainable living.</p>
@@ -69,11 +64,10 @@ export default function ProductLines() {
     );
 }
 
-// New component for animating each row
 function ProductRow({ rowProducts, cardsPerRow }) {
     const controls = useAnimation();
     const [ref, inView] = useInView({
-        triggerOnce: true, // Only animate once when the row comes into view
+        triggerOnce: true,
         threshold: 0.1,
     });
 
@@ -84,27 +78,20 @@ function ProductRow({ rowProducts, cardsPerRow }) {
     }, [controls, inView]);
 
     const itemVariants = {
-        hidden: (colIndex) => { // colIndex is the index within the current row (0, 1, 2)
+        hidden: (colIndex) => {
             let xOffset = 0;
-            // Adjust offsets to make cards appear stacked in the center initially
-            // Calculate offset for stacking cards in the center
-            // Approximate card width and gap based on typical grid layout for a row
-            // In a real application, you might use clientWidth/getBoundingClientRect for more accuracy
-            const estimatedCardWidth = 380; // Example: ~1/3 of a 1200px container minus gaps
-            const estimatedGap = 32;       // Tailwind gap-8
+            const estimatedCardWidth = 380;
+            const estimatedGap = 32;
             const stackOffset = estimatedCardWidth + estimatedGap;
 
             if (cardsPerRow === 3) {
-                if (colIndex === 0) xOffset = stackOffset;   // Left card moves right to stack over middle
-                else if (colIndex === 2) xOffset = -stackOffset; // Right card moves left to stack over middle
-                // Middle card (colIndex === 1) has xOffset = 0 (relative to its final position)
-                // This means the middle card acts as the "stack center".
+                if (colIndex === 0) xOffset = stackOffset;
+                else if (colIndex === 2) xOffset = -stackOffset;
             } else if (cardsPerRow === 2) {
-                // For two cards, stack them slightly off-center to maintain "stack" feel
                 if (colIndex === 0) xOffset = stackOffset / 2;
                 else if (colIndex === 1) xOffset = -stackOffset / 2;
-            } else { // cardsPerRow === 1 (e.g., on small screens)
-                xOffset = 0; // No horizontal movement, it's already centered
+            } else {
+                xOffset = 0;
             }
             return { x: xOffset, opacity: 0 };
         },
@@ -113,7 +100,7 @@ function ProductRow({ rowProducts, cardsPerRow }) {
             opacity: 1,
             transition: {
                 type: 'spring',
-                stiffness: 100, // Slightly less stiffness for a smoother initial group feel
+                stiffness: 100,
                 damping: 20,
             },
         },
@@ -124,36 +111,34 @@ function ProductRow({ rowProducts, cardsPerRow }) {
         visible: {
             opacity: 1,
             transition: {
-                staggerChildren: 0.15, // Increased stagger for a more noticeable spread
+                staggerChildren: 0.15,
                 delayChildren: 0.2,
             },
         },
     };
 
     return (
-        <motion.div
-            ref={ref}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8 last:mb-0" // Add margin-bottom for spacing between rows
-            variants={rowContainerVariants}
-            initial="hidden"
-            animate={controls}
-        >
-            {rowProducts.map((product, index) => ( // 'index' here is colIndex (0, 1, 2)
+            <motion.div
+                ref={ref}
+                className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-8 mb-8 last:mb-0"
+                variants={rowContainerVariants}
+                initial="hidden"
+                animate={controls}
+            >
+            {rowProducts.map((product, index) => (
                 <motion.div
                     key={index}
                     className="group p-4 bg-white rounded-[20px] shadow-lg overflow-hidden"
                     variants={itemVariants}
-                    custom={index} // Pass colIndex for variant calculation
+                    custom={index}
                 >
-                    <div className="relative h-80 w-full overflow-hidden"> {/* Removed scaling from here */}
+                    <div className="relative h-80 w-full overflow-hidden">
                         <img
                             src={product.image}
                             alt={product.title}
                             className="w-full h-full object-cover rounded-[20px] transition-transform duration-300 group-hover:scale-105" 
                         />
-                        {/* Image overlay for darkening effect on hover */}
                         <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-[20px]"></div> {/* Changed opacity to 20 */}
-                        {/* Explore Now Button */}
                         <button className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center bg-green-500 text-white py-2 px-6 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-yellow-400 text-lg font-semibold whitespace-nowrap">
                             Explore Now
                         </button>

@@ -40,22 +40,19 @@ export default function WhyChooseUs() {
 
   const sectionRef = useRef(null);
   const iconRefs = useRef([]);
-  const contentRefs = useRef([]); // refs for title+desc blocks to measure
+  const contentRefs = useRef([]);
   const ctxRef = useRef(null);
   const activeIndexRef = useRef(0);
   const prevIndexRef = useRef(0);
 
-  // animate title/desc reveal when activeIndex changes
   useEffect(() => {
     const newIndex = activeIndex;
     const prevIndex = prevIndexRef.current;
     const direction = newIndex > prevIndex ? 1 : newIndex < prevIndex ? -1 : 0; // 1 = down, -1 = up
 
-    // get DOM nodes
     const incoming = contentRefs.current[newIndex];
     const outgoing = contentRefs.current[prevIndex];
 
-    // hide outgoing, animate incoming
     if (outgoing && outgoing !== incoming) {
       gsap.killTweensOf(outgoing);
       gsap.to(outgoing, { opacity: 0, y: direction === 1 ? 10 : -10, duration: 0.18, ease: "power1.in" });
@@ -63,7 +60,6 @@ export default function WhyChooseUs() {
 
     if (incoming) {
       gsap.killTweensOf(incoming);
-      // reset start (from top if scrolling down => y:-20, from bottom if scrolling up => y:20)
       gsap.set(incoming, { opacity: 0, y: direction === 1 ? -20 : direction === -1 ? 20 : 0, willChange: "transform,opacity" });
       gsap.to(incoming, { opacity: 1, y: 0, duration: 0.42, ease: "power2.out" });
     }
@@ -77,7 +73,6 @@ export default function WhyChooseUs() {
     contentRefs.current = contentRefs.current.slice(0, features.length);
 
     const buildTimeline = () => {
-      // teardown previous
       if (ctxRef.current) {
         ctxRef.current.revert();
         ScrollTrigger.getAll().forEach((st) => {
@@ -95,12 +90,10 @@ export default function WhyChooseUs() {
       const ctx = gsap.context(() => {
         const tl = gsap.timeline();
 
-        // ensure initial positions (first centered)
         iconRefs.current.forEach((el, i) => {
           if (el) gsap.set(el, { x: i === 0 ? 0 : vw, opacity: i === 0 ? 1 : 0, willChange: "transform,opacity" });
         });
 
-        // Build slot-based timeline (0..lastIdx-1)
         for (let s = 0; s < lastIdx; s++) {
           const currentEl = iconRefs.current[s];
           const nextEl = iconRefs.current[s + 1];
@@ -117,7 +110,6 @@ export default function WhyChooseUs() {
           }
         }
 
-        // ScrollTrigger pinned area: use (features.length - 1) so last item stays centered
         ScrollTrigger.create({
           trigger: section,
           start: "top top",
@@ -137,7 +129,6 @@ export default function WhyChooseUs() {
             ease: "power1.out",
           },
           onUpdate: (self) => {
-            // map progress to index using slots = lastIdx
             const slots = Math.max(1, lastIdx);
             const calcIndex = Math.min(lastIdx, Math.max(0, Math.round(self.progress * slots)));
             if (calcIndex !== activeIndexRef.current) {
@@ -155,21 +146,17 @@ export default function WhyChooseUs() {
           },
         });
 
-        // ensure first visible
         const first = iconRefs.current[0];
         if (first) gsap.set(first, { x: 0, opacity: 1 });
       }, section);
 
       ctxRef.current = ctx;
-    }; // buildTimeline
+    };
 
-    // measure content heights to avoid shifting
     const measureContentHeights = () => {
       let max = 0;
       contentRefs.current.forEach((el) => {
         if (!el) return;
-        // ensure element is measurable: temporarily make visible offscreen if necessary
-        // Use getBoundingClientRect which works even if opacity:0; but if display:none it won't.
         const rect = el.getBoundingClientRect();
         const h = Math.ceil(rect.height);
         if (h > max) max = h;
@@ -177,15 +164,12 @@ export default function WhyChooseUs() {
       if (max > 0 && max !== maxContentHeight) setMaxContentHeight(max);
     };
 
-    // initial build + measurement
     buildTimeline();
-    // Wait for browser to render content then measure
     requestAnimationFrame(() => {
       measureContentHeights();
       ScrollTrigger.refresh();
     });
 
-    // on resize, rebuild and re-measure
     const onResize = () => {
       clearTimeout(window.__wcResizeTimer);
       window.__wcResizeTimer = setTimeout(() => {
@@ -206,7 +190,7 @@ export default function WhyChooseUs() {
         if (st.vars && st.vars.trigger === sectionRef.current) st.kill();
       });
     };
-  }, []); // run once
+  }, []);
 
   return (
     <section
@@ -250,12 +234,9 @@ export default function WhyChooseUs() {
           })}
         </div>
 
-        {/* Title + Description area (stacked absolutely, keep space reserved by spacer) */}
         <div style={{ position: "relative", width: "100%" }} className="mb-2">
-          {/* Spacer keeps layout stable with height = tallest content */}
           <div style={{ height: maxContentHeight || undefined }} />
 
-          {/* All content blocks are absolutely stacked inside this box */}
           <div
             style={{
               position: "absolute",
@@ -266,7 +247,7 @@ export default function WhyChooseUs() {
               display: "flex",
               alignItems: "flex-start",
               justifyContent: "center",
-              pointerEvents: "none", // prevent accidental selection during animation
+              pointerEvents: "none",
             }}
           >
             <div style={{ width: "100%", maxWidth: "64rem", padding: "0 1rem" }}>

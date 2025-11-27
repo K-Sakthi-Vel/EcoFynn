@@ -2,20 +2,20 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 import logo from '../assets/logo.png';
-import footerBg from '../assets/footer/footer-bg.png'; // Assuming this is the correct background image as per user
+import footerBg from '../assets/footer/footer-bg.png';
 import facebookIcon from '../assets/footer/facebook.png';
 import instagramIcon from '../assets/footer/instagram.png';
-import twitterIcon from '../assets/footer/twitter.png'; // This will be used for 'X' as per user's image
+import twitterIcon from '../assets/footer/twitter.png';
 
 const {VITE_BACKEND_URL} = import.meta.env;
 export default function Footer() {
     const [email, setEmail] = useState('');
     const [loading, setLoading] = useState(false);
-    const [message, setMessage] = useState(''); // For success/error messages
+    const [message, setMessage] = useState('');
 
     const handleBrochureRequest = async () => {
         setLoading(true);
-        setMessage(''); // Clear previous messages
+        setMessage('');
 
         try {
             // First, validate the email
@@ -50,11 +50,10 @@ export default function Footer() {
             transition={{ duration: 0.6 }}
             style={{ backgroundImage: `url(${footerBg})`, backgroundSize: 'cover', backgroundPosition: 'center' , fontFamily:"Poppins"}}
         >
-            {/* The wavy top section is removed as per user's instruction */}
 
-            <div className="relative z-20 mx-auto pb-10 sm:pb-20 px-4 md:px-8 lg:px-50 flex flex-col md:flex-col lg:flex-row">
+            <div className="relative z-20 mx-auto pb-10 sm:pb-20 px-4 md:px-8 lg:px-12 flex flex-col md:flex-col lg:flex-row justify-between">
                 {/* Left Section: Logo, Description, and Brochure */}
-                <div className="flex flex-col items-start w-full md:w-1/2 mb-10 md:mb-0">
+                <div className="flex flex-col items-start w-full md:w-full lg:w-1/2 lg:pr-10 mb-10 md:mb-0">
                     <img src={logo} alt="Ecofynn Logo" className="w-24 h-auto mb-6 ml-0 md:ml-[-10px]" />
                     <p className="mt-3 text-base text-white/90 leading-relaxed max-w-xs pr-4">
                         Our goal is to make sustainable choices easy for homes, offices, and businesses.
@@ -68,7 +67,7 @@ export default function Footer() {
                             onChange={(e) => setEmail(e.target.value)}
                         />
                         <button
-                            className="whitespace-nowrap rounded-full px-6 py-3 sm:py-5 bg-[#2dbc3b] sm:ml-5 text-white font-semibold hover:bg-[#4CAF3A] transition-colors duration-200"
+                            className="whitespace-nowrap cursor-pointer rounded-full px-6 py-3 sm:py-5 bg-[#2dbc3b] sm:ml-5 text-white font-semibold hover:bg-yellow-300 hover:text-black/70 transition-colors duration-200"
                             onClick={handleBrochureRequest}
                             disabled={loading}
                         >
@@ -88,7 +87,7 @@ export default function Footer() {
                 </div>
 
                 {/* Right Section: Quick Links, Our Products, About */}
-                <div className="w-full md:w-1/2 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 lg:gap-20">
+                <div className="w-full md:w-full lg:w-1/2 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 lg:gap-20">
                     {/* Quick Links */}
                     <div>
                         <div className="font-semibold text-xl sm:text-2xl mb-4 sm:mb-6" style={{fontFamily:"Poppins"}}>Quick Links</div>

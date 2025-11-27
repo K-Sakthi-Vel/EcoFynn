@@ -17,11 +17,10 @@ export default function AboutUs() {
     if (inView) controls.start("visible");
   }, [controls, inView]);
 
-  // Colors & timing (from your snippet)
-  const wordInitialColor = "#d1d5db"; // Light gray for initial visible state
-  const wordFinalColor = "#4b5563"; // Darker gray for revealed state
-  const wordDuration = 0.12; // Duration for each word's color transition
-  const staggerDelay = wordDuration; // Stagger to ensure sequential one-at-a-time
+  const wordInitialColor = "#d1d5db";
+  const wordFinalColor = "#4b5563"; 
+  const wordDuration = 0.12; 
+  const staggerDelay = wordDuration; 
 
   // Parent will stagger children so animation follows DOM order (left->right, top->bottom)
   const parentVariants = {
@@ -53,10 +52,8 @@ export default function AboutUs() {
       className="relative py-20 px-6 bg-[#eef5e9] overflow-hidden"
       aria-label="About Future Green"
     >
-      {/* Decorative images (kept as in your original layout).
-          one of them points to the local file you uploaded. */}
+
       <div className="absolute bottom-5 rotate-[180deg] left-0">
-        {/* if you prefer your original asset path, swap the src */}
         <img
           src="/src/assets/top-left.png"
           alt="leaf decoration"

@@ -41,11 +41,11 @@ export default function TrendingProducts() {
     };
 
     useEffect(() => {
-        checkScroll(); // Initial check
+        checkScroll();
         const scrollContainer = scrollContainerRef.current;
         if (scrollContainer) {
             scrollContainer.addEventListener('scroll', checkScroll);
-            window.addEventListener('resize', checkScroll); // Recalculate on resize
+            window.addEventListener('resize', checkScroll);
             return () => {
                 scrollContainer.removeEventListener('scroll', checkScroll);
                 window.removeEventListener('resize', checkScroll);
@@ -56,7 +56,7 @@ export default function TrendingProducts() {
     const scroll = (direction) => {
         if (scrollContainerRef.current) {
             scrollContainerRef.current.scrollBy({
-                left: direction === 'left' ? -316 : 316, // Approximate card width + gap (300px + 24px = 324px, slightly adjusted for better feel)
+                left: direction === 'left' ? -316 : 316,
                 behavior: 'smooth'
             });
         }
@@ -67,10 +67,8 @@ export default function TrendingProducts() {
             className="relative py-16 px-10 overflow-hidden"
             style={{ backgroundImage: `url(${trendingBg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
         >
-            {/* Overlay for background opacity */}
             <div className="absolute inset-0 bg-white opacity-70"></div>
             <div className="absolute top-5 rotate-[180deg] left-0">
-                {/* if you prefer your original asset path, swap the src */}
                 <img
                     src="/src/assets/top-left.png"
                     alt="leaf decoration"
@@ -79,7 +77,6 @@ export default function TrendingProducts() {
             </div>
 
             <div className="absolute bottom-10 right-0 rotate-[180deg]">
-                {/* local screenshot / image you uploaded — used here as a decorative asset */}
                 <img
                     src="/src/assets/bottom-right.png"
                     alt="decorative"
@@ -87,13 +84,13 @@ export default function TrendingProducts() {
                 />
             </div>
 
-            <div className="relative z-10 w-auto mx-auto px-4 sm:px-6 lg:px-50">
+            <div className="relative z-10 w-auto mx-auto px-4 sm:px-6 lg:px-20">
                 <div className="flex flex-col md:flex-row justify-between items-center mb-10 text-center md:text-left">
                     <div className="mb-6 md:mb-0">
                         <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-2" style={{fontFamily:"Poppins"}}>Trending Products</h2>
                         <p className="text-gray-800 text-base sm:text-lg">Popular eco-friendly essentials that customers choose for quality, value, and sustainability.</p>
                     </div>
-                    <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 w-full md:w-auto">
+                    <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 w-full md:w-auto justify-center md:justify-start">
                         <button className="px-8 py-3 bg-green-500 text-white font-semibold rounded-full shadow-lg hover:bg-green-600 transition duration-300 text-lg w-full sm:w-auto">
                             View All
                         </button>
@@ -131,9 +128,10 @@ export default function TrendingProducts() {
                 `}</style>
                 <div ref={scrollContainerRef} className="flex overflow-x-auto space-x-4 sm:space-x-6 pb-4 no-scrollbar">
                     {products.map(product => (
-                        <div key={product.id} className="h-[500px] min-w-[80vw] sm:min-w-[300px] md:min-w-[350px] max-w-[500px] bg-white rounded-2xl shadow-lg p-4 flex flex-col items-start border border-gray-200">
+                        <div key={product.id} className="group h-[450px] min-w-[70vw] sm:min-w-[60vw] md:min-w-[300px] lg:min-w-[300px] xl:min-w-[350px] max-w-[500px] bg-white rounded-2xl shadow-lg p-4 flex flex-col items-start border border-gray-200">
                             <div className="relative w-full h-80 sm:h-100 mb-3 rounded-lg overflow-hidden border border-gray-200 bg-gray-100">
-                                <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+                                <img src={product.image} alt={product.name} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
+                                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-lg"></div>
                             </div>
                             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center w-full mb-3">
                                 <h3 className="text-xl sm:text-2xl font-semibold text-gray-800" style={{ fontFamily: 'Poppins' }}>{product.name}</h3>

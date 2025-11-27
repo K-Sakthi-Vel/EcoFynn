@@ -20,11 +20,9 @@ export default function Header() {
         >
             <div className="max-w-7xl h-[80px] mx-auto px-6 py-4 flex items-center justify-between">
                 <div className="flex items-center">
-                    {/* Ecofynn Logo */}
-                    <img src={Logo} alt="Ecofynn Logo" className="h-15 w-15 mr-8" /> {/* Placeholder logo */}
+                    <img src={Logo} alt="Ecofynn Logo" className="h-15 w-15 mr-8" />
                 </div>
 
-                {/* Mobile Menu Toggle (Hamburger Icon) */}
                 <div className="md:hidden flex items-center">
                     <button onClick={toggleMobileMenu} className="p-2 rounded-full hover:bg-gray-100">
                         {isMobileMenuOpen ? (

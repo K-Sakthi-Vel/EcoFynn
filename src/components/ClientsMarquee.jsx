@@ -42,7 +42,6 @@ export default function ClientsMarquee() {
               style={{ filter: 'brightness(1.1) contrast(1.2)' }}
             />
           ))}
-          {/* Duplicate logos for seamless looping */}
           {clientLogos.map((logo, index) => (
             <img
               key={`duplicate-${index}`}

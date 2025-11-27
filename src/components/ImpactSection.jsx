@@ -2,8 +2,6 @@ import React, { useLayoutEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import impactBg from '../assets/impact-section.jpg';
-
-// Import trending product images
 import Product1 from '../assets/trending_products/Product1.jpg';
 import Product2 from '../assets/trending_products/Product2.jpg';
 import Product3 from '../assets/trending_products/Product3.jpg';
@@ -65,17 +63,13 @@ export default function ImpactSection() {
       const slotDuration = 1;
       const slotOffset = 0.2;
 
-      // === MAIN CHANGE: bigger size + full opacity + stronger shadow ===
-      // We'll set each img to be larger (wider) and apply a photographic shadow.
-      // Shadow applied via inline style so it matches even if Tailwind config differs.
-
       imgs.forEach((img, i) => {
         const isRight = i % 2 === 0;
         const colLeft = isRight ? rightPercent : leftPercent;
         const rowSeed = i * perRowVerticalOffset;
         const jitterX = (Math.random() - 0.5) * 36;
-        const leftRotation = -20;  // Uniform angle for left images
-        const rightRotation = 20; // Uniform angle for right images
+        const leftRotation = -20;
+        const rightRotation = 20;
 
         // set placement and visual style (larger width + shadow + full opacity)
         gsap.set(img, {
@@ -83,9 +77,9 @@ export default function ImpactSection() {
           top: 0,
           transform: 'translate(-50%, 0)',
           x: jitterX,
-          rotation: isRight ? rightRotation : leftRotation, // Apply uniform rotation based on side
-          opacity: 1, // fully opaque
-          scale: 1,   // base scale 1
+          rotation: isRight ? rightRotation : leftRotation, 
+          opacity: 1,
+          scale: 1, 
         });
 
         // compute off-screen start and end positions
@@ -96,23 +90,21 @@ export default function ImpactSection() {
         tl.fromTo(img,
           {
             y: startY,
-            // opacity already 1 so keep it visible
             opacity: 1,
             scale: 1.02,
           },
           {
             y: endY,
             x: jitterX + (Math.random() - 0.5) * 12,
-            rotation: isRight ? rightRotation : leftRotation, // Apply uniform rotation
-            opacity: 1,           // keep fully opaque throughout
-            scale: 1.06,          // slight scale up while moving
+            rotation: isRight ? rightRotation : leftRotation,
+            opacity: 1,
+            scale: 1.06,
             ease: "none",
             duration: slotDuration,
           },
           i * slotOffset
         );
 
-        // no extra fade-in tweens (we keep images fully visible)
       });
 
       // compute timeline length and hook to scroll trigger (keeps previous mapping)
@@ -129,17 +121,13 @@ export default function ImpactSection() {
         pin: true,
         anticipatePin: 1,
         invalidateOnRefresh: true,
-        // markers: true, // enable if you want to debug
       });
 
-      // refresh
       ScrollTrigger.refresh();
 
-      // resize handler to keep things consistent
       const onResize = () => ScrollTrigger.refresh();
       window.addEventListener('resize', onResize);
 
-      // cleanup listener when timeline is cleaned
       tl._onCleanup = () => window.removeEventListener('resize', onResize);
     }, comp);
 
@@ -167,17 +155,16 @@ export default function ImpactSection() {
             ref={el => imageRefs.current[index] = el}
             src={image}
             alt={`Eco-friendly product ${index + 1}`}
-            /* LARGER IMAGE + STRONG SHADOW + rounded corners */
             className="absolute rounded-2xl object-cover"
             style={{
               zIndex: 60 + index,
               top: 0,
               pointerEvents: 'none',
-              width: '460px', // Fixed width for images
-              height: '340px', // Fixed height for images
-              boxShadow: '0 30px 60px rgba(0,0,0,0.35)', // stronger photographic shadow
+              width: '460px',
+              height: '340px',
+              boxShadow: '0 30px 60px rgba(0,0,0,0.35)',
               borderRadius: '14px',
-              opacity: 1, // ensure fully opaque in case CSS affects it
+              opacity: 1,
             }}
           />
         ))}
