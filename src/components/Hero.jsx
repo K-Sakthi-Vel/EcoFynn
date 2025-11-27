@@ -2,6 +2,12 @@ import React, { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
+import heroBg from '../assets/hero/hero-bg.jpg';
+import topLeft from '../assets/top-left.png';
+import topRight from '../assets/top-right.png';
+import bottomLeft from '../assets/bottom-left.png';
+import bottomRight from '../assets/bottom-right.png';
+
 export default function Hero() {
     const controls = useAnimation();
     const [ref, inView] = useInView({
@@ -83,7 +89,7 @@ export default function Hero() {
         <section
             ref={ref}
             className="relative bg-cover bg-center h-[calc(100vh-80px)] flex items-center justify-center text-center px-4 overflow-hidden"
-            style={{ backgroundImage: "url('/src/assets/hero/hero-bg.jpg')" }}
+            style={{ backgroundImage: `url(${heroBg})` }}
         >
             <div className="absolute inset-0 bg-white opacity-70"></div>
 
@@ -152,7 +158,7 @@ export default function Hero() {
 
             {/* Corner Images */}
             <motion.img
-                src="/src/assets/top-left.png"
+                src={topLeft}
                 alt="leaf"
                 className="absolute top-0 left-0 w-100 h-70 object-contain"
                 initial="hidden"
@@ -161,7 +167,7 @@ export default function Hero() {
                 variants={imageVariants}
             />
             <motion.img
-                src="/src/assets/top-right.png"
+                src={topRight}
                 alt="leaf"
                 className="absolute top-0 right-0 w-100 h-70 object-contain"
                 initial="hidden"
@@ -170,7 +176,7 @@ export default function Hero() {
                 variants={imageVariants}
             />
             <motion.img
-                src="/src/assets/bottom-left.png"
+                src={bottomLeft}
                 alt="leaf"
                 className="absolute bottom-0 left-0 w-100 h-70 object-contain"
                 initial="hidden"
@@ -179,7 +185,7 @@ export default function Hero() {
                 variants={imageVariants}
             />
             <motion.img
-                src="/src/assets/bottom-right.png"
+                src={bottomRight}
                 alt="leaf"
                 className="absolute bottom-0 right-0 w-120 h-70 object-contain"
                 initial="hidden"

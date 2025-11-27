@@ -1,5 +1,7 @@
 import React from 'react';
 import trendingBg from '../assets/trending_products/trending-bg.jpg';
+import topLeft from '../assets/top-left.png';
+import bottomRight from '../assets/bottom-right.png';
 import Product1 from '../assets/trending_products/Product1.jpg';
 import Product2 from '../assets/trending_products/Product2.jpg';
 import Product3 from '../assets/trending_products/Product3.jpg';
@@ -70,7 +72,7 @@ export default function TrendingProducts() {
             <div className="absolute inset-0 bg-white opacity-70"></div>
             <div className="absolute top-5 rotate-[180deg] left-0">
                 <img
-                    src="/src/assets/top-left.png"
+                    src={topLeft}
                     alt="leaf decoration"
                     className="w-100 h-70 opacity-100"
                 />
@@ -78,7 +80,7 @@ export default function TrendingProducts() {
 
             <div className="absolute bottom-10 right-0 rotate-[180deg]">
                 <img
-                    src="/src/assets/bottom-right.png"
+                    src={bottomRight}
                     alt="decorative"
                     className="w-100 h-70 opacity-100 object-contain"
                 />

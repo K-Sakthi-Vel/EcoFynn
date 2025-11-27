@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import topLeft from '../assets/top-left.png';
+import bottomRight from '../assets/bottom-right.png';
 
 export default function AboutUs() {
   const controls = useAnimation();
@@ -55,7 +57,7 @@ export default function AboutUs() {
 
       <div className="absolute bottom-5 rotate-[180deg] left-0">
         <img
-          src="/src/assets/top-left.png"
+          src={topLeft}
           alt="leaf decoration"
           className="w-100 h-70 opacity-100"
         />
@@ -64,7 +66,7 @@ export default function AboutUs() {
       <div className="absolute bottom-10 right-0 rotate-[180deg]">
         {/* local screenshot / image you uploaded — used here as a decorative asset */}
         <img
-          src="/src/assets/bottom-right.png"
+          src={bottomRight}
           alt="decorative"
           className="w-100 h-70 opacity-100 object-contain"
         />
